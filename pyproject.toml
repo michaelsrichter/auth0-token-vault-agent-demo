@@ -1,0 +1,28 @@
+[project]
+name = "auth01agent1"
+version = "0.1.0"
+description = "Demo: Auth0 Token Vault + Microsoft Agent Framework"
+requires-python = ">=3.11"
+dependencies = [
+    "auth0-ai @ git+https://github.com/auth0/auth0-ai-python.git@main#subdirectory=packages/auth0-ai",
+    "auth0-ai-ms-agent @ git+https://github.com/auth0/auth0-ai-python.git@main#subdirectory=packages/auth0-ai-ms-agent",
+    "agent-framework-core>=1.0.0rc2",
+    "openai>=1.30.0",
+    "azure-identity>=1.15.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+demo = "src.main:run"
+login = "src.login:login"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
