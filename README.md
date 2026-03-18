@@ -1,6 +1,8 @@
 # Auth0 Token Vault + Microsoft Agent Framework Demo
 
-An interactive CLI agent that calls **GitHub** and **Google Calendar** APIs on the user's behalf using [Auth0 Token Vault](https://auth0.com/docs/secure/call-apis-on-users-behalf/token-vault) and [Microsoft Agent Framework](https://github.com/microsoft/agent-framework).
+An interactive CLI agent that calls the **GitHub** API on the user's behalf using [Auth0 Token Vault](https://auth0.com/docs/secure/call-apis-on-users-behalf/token-vault) and [Microsoft Agent Framework](https://github.com/microsoft/agent-framework).
+
+> **⚠️ Note:** A **Google Calendar** tool is included in the source code but has **not been tested** and is **not guaranteed to work**. Only the GitHub tool has been verified end-to-end.
 
 The LLM is hosted on **Azure OpenAI** (Microsoft Foundry) and authenticated via `DefaultAzureCredential` (`az login`).
 
@@ -87,6 +89,8 @@ Token Vault requires the upstream provider to issue refresh tokens. GitHub OAuth
 
 ### 6. (Optional) Google Calendar Connection
 
+> **⚠️ Warning:** The Google Calendar integration is **not tested** and **not guaranteed to work**. The steps below and the corresponding source code (`src/tools/google_calendar_tool.py`) are provided as a starting point only. Use at your own risk.
+
 1. **Auth0 Dashboard → Authentication → Social → Google**
 2. Create a [Google OAuth 2.0 Client](https://console.cloud.google.com/apis/credentials)
 3. Grant scope: `https://www.googleapis.com/auth/calendar.freebusy`
@@ -161,6 +165,8 @@ You> List my GitHub repos
 
 After the first connection, Token Vault handles token exchange transparently.
 
+> **⚠️ Note:** The agent also includes a Google Calendar tool (`check_user_calendar`), but it has **not been tested** and is **not guaranteed to work**.
+
 ---
 
 ## How It Works
@@ -220,7 +226,7 @@ auth01agent1/
 | Azure Auth | `az login` | No API key needed |
 | User Token | `.env` → `USER_REFRESH_TOKEN` | Auto-saved by `python -m src.login` |
 | GitHub connection name | `src/tools/github_tool.py` | Default: `"github"` |
-| Google connection name | `src/tools/google_calendar_tool.py` | Default: `"google-oauth2"` |
+| Google connection name | `src/tools/google_calendar_tool.py` | Default: `"google-oauth2"` (**untested — not guaranteed to work**) |
 
 ---
 
