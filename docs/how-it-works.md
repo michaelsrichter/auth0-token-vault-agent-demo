@@ -20,7 +20,9 @@ This sample agent combines Microsoft Foundry + Auth0:
 The agent:
 
 * Authenticates the user via Auth0
-* Uses Token Vault to securely access the **GitHub API** (repo listings) and **Google Calendar** (free/busy queries)
+* Uses Token Vault to securely access the **GitHub API** (repo listings)
+
+> **⚠️ Note:** A **Google Calendar** tool is also present in the source code, but it has **not been tested** and is **not guaranteed to work**.
 
 ---
 
@@ -44,7 +46,7 @@ Code reference: [`src/login.py` → `login()`](../src/login.py#L121)
 
 ### 2) Agent runs (authenticated to Auth0)
 
-The agent is configured with two tools — one for GitHub and one for Google Calendar:
+The agent is configured with two tools — one for GitHub (tested and verified) and one for Google Calendar (**untested — not guaranteed to work**):
 
 Code reference: [`src/agent.py`](../src/agent.py)
 
@@ -145,7 +147,7 @@ Auth0 configuration steps:
 * **Auth0** = identity provider + token broker
 * **Token Vault** = secure token storage + automatic access token exchange
 * The agent **never handles raw credentials** — only short-lived access tokens provided by Token Vault
-* Works with multiple providers (GitHub, Google, and others)
+* Works with multiple providers (GitHub, Google, and others); **note that only GitHub has been tested and verified**
 * Clean separation of concerns:
   * **Who the user is** → Auth0 identity
   * **What APIs the agent can access** → Token Vault manages provider tokens

@@ -1,4 +1,8 @@
-"""Google Calendar tool secured with Auth0 Token Vault."""
+"""Google Calendar tool secured with Auth0 Token Vault.
+
+WARNING: This tool has NOT been tested and is NOT guaranteed to work.
+It is provided as a starting point only. Use at your own risk.
+"""
 
 import httpx
 from datetime import datetime
