@@ -165,6 +165,8 @@ After the first connection, Token Vault handles token exchange transparently.
 
 ## How It Works
 
+> For a detailed walkthrough of the end-to-end flow, see **[docs/how-it-works.md](docs/how-it-works.md)**.
+
 ### Token Vault Flow
 
 1. User logs in via Auth0 → gets an Auth0 refresh token
